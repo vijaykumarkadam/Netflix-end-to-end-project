@@ -5,7 +5,14 @@
 			{
 				"name": "ForEach file",
 				"type": "ForEach",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Validationoffile in adls",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
@@ -86,6 +93,20 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Validationoffile in adls",
+				"type": "Validation",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_validation_csv",
+						"type": "DatasetReference"
+					},
+					"timeout": "0.12:00:00",
+					"sleep": 10
+				}
 			}
 		],
 		"parameters": {
@@ -109,6 +130,11 @@
 						"file_name": "netflix_directors.csv"
 					}
 				]
+			}
+		},
+		"variables": {
+			"web_response": {
+				"type": "String"
 			}
 		},
 		"annotations": []
