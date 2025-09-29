@@ -115,19 +115,23 @@
 				"defaultValue": [
 					{
 						"folder_name": "netflix_cast",
-						"file_name": "netflix_cast.csv"
+						"file_name": "netflix_cast.csv",
+						"sink_file_name": "netflix_cast"
 					},
 					{
 						"folder_name": "netflix_category",
-						"file_name": "netflix_category.csv"
+						"file_name": "netflix_category.csv",
+						"sink_file_name": "netflix_category"
 					},
 					{
 						"folder_name": "netflix_countries",
-						"file_name": "netflix_countries.csv"
+						"file_name": "netflix_countries.csv",
+						"sink_file_name": "netflix_countries"
 					},
 					{
 						"folder_name": "netflix_directors",
-						"file_name": "netflix_directors.csv"
+						"file_name": "netflix_directors.csv",
+						"sink_file_name": "netflix_directors"
 					}
 				]
 			}
