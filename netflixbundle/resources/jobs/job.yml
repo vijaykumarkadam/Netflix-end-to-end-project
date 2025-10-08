@@ -1,0 +1,25 @@
+resources:
+  jobs:
+    dynamic_pipeline:
+      name: dynamic pipeline
+      tasks:
+        - task_key: lookup_activity
+          notebook_task:
+            notebook_path: ../../netflixbundle/src/lookup_notebook_02.ipynb
+            source: WORKSPACE
+        - task_key: silver_activity
+          depends_on:
+            - task_key: lookup_activity
+          for_each_task:
+            inputs: "{{tasks.lookup_activity.values.my_arr}}"
+            task:
+              task_key: silver_activity_iteration
+              notebook_task:
+                notebook_path: ../../netflixbundle/src/silver_notebook_03.ipynb
+                base_parameters:
+                  source_folder: "{{input.source_folder}}"
+                  target_folder: "{{input.target_folder}}"
+                source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
